@@ -2,6 +2,15 @@
 // Write a function called generatePassword()
 
 function generatePassword() {
+  // Create a variable that stores the password
+  var password = "";  
+  // Create a variable that stores the special characters
+  var specialChar = "~`!@#$%^&*()-_+={}[]|\/:;<>,.?v"
+  // Create a variable that stores the numbers
+  var numbers = "0123456789";
+  // Create a variable that stores the lowercase letters
+  var lowerCase = "abcdefghijklmnopqrstuvwxyz";
+
   // within this function prompt the user to choose which criteria
   var shouldUseLowerCaseLetters = confirm("Use lowercase letters?");
   var shouldUseUpperCaseLetters = confirm("Use upercase letters?");
@@ -35,7 +44,24 @@ function generatePassword() {
     return generatePassword();
   }
 
+  if (shouldUseLowerCaseLetters) {
+    // add lowercase letters to the password
+  }
+
+  if (shouldUseUpperCaseLetters) {
+    // add uppercase letters to the password
+  }
+
+  if (shouldUseNumbers) {
+    // add numbers to the password
+  }
+
+  if (shouldUseSpecial) {
+    // add special characters to the password
+  }
+
   // Return a password based on criteria offered to the user
+  return "password string coming soon"
 }
 
 // Get references to the #generate element
