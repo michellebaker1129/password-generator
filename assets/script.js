@@ -11,14 +11,20 @@ function generatePassword() {
   // Create a variable that stores the lowercase letters
   var lowerCase = "abcdefghijklmnopqrstuvwxyz";
 
-  // within this function prompt the user to choose which criteria
-  var shouldUseLowerCaseLetters = confirm("Use lowercase letters?");
-  var shouldUseUpperCaseLetters = confirm("Use upercase letters?");
-  var shouldUseNumbers = confirm("Use numbers?")
-  var shouldUseSpecial = confirm("Use special characters?")
+  // Create a variable that stores the password length
+  // and prompt the user to choose a password length
   var passwordLength = parseInt(
     prompt("how many characters (between 8 and 128)?")
   )
+
+  // If passwordLength is not a number, show an alert to the user
+  // error handling or fail case
+  if (
+    isNaN(passwordLength)
+  ) {
+    alert("you have to enter a number")
+    return generatePassword();
+  }
 
   // check password length to ensure it is between 8 and 128 characters
   // error handling or fail case
@@ -29,6 +35,12 @@ function generatePassword() {
     alert("must be between 8 and 128 characters")
     return generatePassword();
   }
+
+  // within this function prompt the user to choose which criteria
+  var shouldUseLowerCaseLetters = confirm("Use lowercase letters?");
+  var shouldUseUpperCaseLetters = confirm("Use upercase letters?");
+  var shouldUseNumbers = confirm("Use numbers?");
+  var shouldUseSpecial = confirm("Use special characters?");
   
   // check to make sure the user selected at least one of the above options 
   // error handling
@@ -44,24 +56,42 @@ function generatePassword() {
     return generatePassword();
   }
 
-  if (shouldUseLowerCaseLetters) {
-    // add lowercase letters to the password
-  }
+  // Create a variable that stores the possible characters
+  var possibleCharacters = "";
 
-  if (shouldUseUpperCaseLetters) {
-    // add uppercase letters to the password
-  }
-
-  if (shouldUseNumbers) {
-    // add numbers to the password
-  }
-
+  // If special characters
   if (shouldUseSpecial) {
-    // add special characters to the password
+    possibleCharacters += specialChar;
+  }
+
+  // If numbers
+  if (shouldUseNumbers) {
+    possibleCharacters += numbers
+  }
+
+  // If lowercase letters
+  if (shouldUseLowerCaseLetters) {
+    possibleCharacters += lowerCase
+  }
+
+  // If uppercase letters
+  if (shouldUseUpperCaseLetters) {
+    possibleCharacters += lowerCase.toUpperCase()
+  }
+
+  // Create a for loop that goes for the length of the password
+  //  and randomly selects a character from the possibleCharacters
+  //  and adds it to the password
+  for (var i = 0; i < passwordLength; i++) {
+    var randomIndex = Math.floor(
+      Math.random() * possibleCharacters.length
+    )
+    
+    password += possibleCharacters[randomIndex]
   }
 
   // Return a password based on criteria offered to the user
-  return "password string coming soon"
+  return password
 }
 
 // Get references to the #generate element
